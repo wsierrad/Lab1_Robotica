@@ -71,8 +71,53 @@ def pubVel(vel_x,ang_z, t):
     while rospy.Time.now() < endTime: #bucle mientras el tiempo sea menor que el endTime
         pub.publish(vel) # se publica el mensaje.
 ```
+De manera similar se definió una función `pubPos' para realizar el movimiento de la tortuga a su posición inicial, en este se hace uso del servicio 'TeleportAbsolute'
 
+```python
+#función pubPos
+def pubPos(x,y,theta):
+    rospy.wait_for_service('/turtle1/teleport_absolute') # se espera a que el servicio esté disponible
+    try:
+        telA=rospy.ServiceProxy('/turtle1/teleport_absolute', TeleportAbsolute) # se llama el servicio de tipo TeleportAbsolute
+        resp=telA(x,y,theta) # se guarda el resultado.
+    except rospy.ServiceException:
+        pass
+```
 
+La ùltima función implementada, se utiliza para que la tortuga tenga movimiento con respecto a su posición actual, y en este caso para que gire 180º en cualquier posición.
+```python
+def pubPosRel(x,theta):
+    rospy.wait_for_service('/turtle1/teleport_relative') # se espera a que el servicio esté disponible
+    try:
+        telR=rospy.ServiceProxy('/turtle1/teleport_relative', TeleportRelative) # se llama el servicio de tipo TeleportRelative
+        rel=telR(x,theta) # se guarda el resultado.
+    except rospy.ServiceException:
+        pass
+```
+Finalmente, en el `main` del programa se le asigna a cada tecla su funciòn, con sus respectivos valores.
+```python
+if __name__ == '__main__':
+    pubVel(0,0,0.1)
+    try:
+        while (1):
+            key = getkey() #se llama la función getkey() y se obtiene la tecla pulsada
+            if key == b'w': 
+                pubVel(1,0,0.1) #si se pulsa w, se avanza    
+            if key == b's':
+                pubVel(-1,0,0.1) #si se pulsa s, se retrocede
+            if key == b'a':
+                pubVel(0,1,0.1) # si se pulsa a, se gira en sentido antihorario
+            if key  == b'd':
+                pubVel(0,-1,0.1) # si se pulsa d, se gira ne sentido horario   
+            if key ==b'r':
+                pubPos(5.54445,5.54445,0) #si se pulsa r, se vuelve al punto de inicio
+            if key ==b' ':
+                pubPosRel(0,3.1415) #si se pulsa ESPACIO, se gira 180º
+        
+    except rospy.ROSInterruptException:
+        pass
+```
+Así, queda el script finalizado
 
 ## Resultados
 
