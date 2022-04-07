@@ -48,6 +48,31 @@ Asi se puede terminar la ejeccucion del nodo que conecta Matlab con ROS por medi
 
 ### ROS usando scripts en python
 
+El punto c) del laboratorio pedìa crear dentro del paquete `hello_turtle` de ROS un script de Python que permitiera operar una tortuga del paquete `turtlesim`con el teclado, siguiendo estas especificaciones:
++ Movimiento hacia delante y hacia atrás con las teclas **W** y **S**
++ Giro en sentido horario y antihorario con la teclas **D** y **A**
++ Retorno a su posición y orientación centrales con la tecla **R**
++ Debe dar un giro de 180º con la tecla **ESPACIO**
+
+En primer lugar, se crea un script llamado `myteleopkey.pi`en el que se importa cliente de Python para ROS, el mensaje twist, los servicios `TeleportAbsolute` y `TeleportRelative`, ademàs del modulo `termios` necesario para la detección de teclas mediante la función `getkey()`.
+
+Debido a dificultades con la líbreria `keyboard` de Python, se recomendó el uso de un código con la función `getkey()` para la detección de las teclas.
+
+Se definió una función pubVel para realizar los movimientos hacia adelante y atrás, como las rotaciones en cada uno de los sentidos.
+~~~
+#función pubvel
+def pubVel(vel_x,ang_z, t):
+    rospy.init_node('velPub', anonymous=True) #inicializa el nodo velPub
+    pub = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10) #se le va a publicar al tópico cmd_vel un mensaje de tipo Twist
+    vel = Twist() # se asigna el mensaje tipo Twist
+    vel.linear.x = vel_x # se asigna velocidad en x
+    vel.angular.z = ang_z #se asigna el valor a rotar alrededor de z. 
+    endTime = rospy.Time.now() + rospy.Duration(t) #se establece un tiempo de finalización, con base a una variable t definida en la función
+    while rospy.Time.now() < endTime: #bucle mientras el tiempo sea menor que el endTime
+        pub.publish(vel) # se publica el mensaje.
+~~~
+
+
 ## Resultados
 
 ### Conexión de ROS con Matlab:
