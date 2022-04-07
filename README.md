@@ -59,7 +59,7 @@ En primer lugar, se crea un script llamado `myteleopkey.pi`en el que se importa 
 Debido a dificultades con la líbreria `keyboard` de Python, se recomendó el uso de un código con la función `getkey()` para la detección de las teclas.
 
 Se definió una función pubVel para realizar los movimientos hacia adelante y atrás, como las rotaciones en cada uno de los sentidos.
-~~~
+```python
 #función pubvel
 def pubVel(vel_x,ang_z, t):
     rospy.init_node('velPub', anonymous=True) #inicializa el nodo velPub
@@ -70,7 +70,8 @@ def pubVel(vel_x,ang_z, t):
     endTime = rospy.Time.now() + rospy.Duration(t) #se establece un tiempo de finalización, con base a una variable t definida en la función
     while rospy.Time.now() < endTime: #bucle mientras el tiempo sea menor que el endTime
         pub.publish(vel) # se publica el mensaje.
-~~~
+```
+
 
 
 ## Resultados
