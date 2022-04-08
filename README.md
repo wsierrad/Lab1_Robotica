@@ -4,6 +4,16 @@
 Brian Alejandro Vásquez González  
 William Arturo Sierra Díaz  
 
+## Familiarización con comandos
+A lo largo de estas primeras semanas en la clase de laboratorio, y además tras ver el enlace con los comandos de mayor uso para la consola de Linux, se hace un breve análisis de algunos de estos comandos de vital importancia.
++`cd`: Uno de los más utiles y utilizados a lo largo del trabajo, permite moverse entre directorios y seleccionar uno en el cual trabajar.
++`ls`: Ya dentro de un directorio, se usa `ls` para mostrar todos los archivos y directorios que se encuentran en el directorio actual. Además, también comandos como `ls -A`que muestra los permisos.
++ `pwd`: Este comando nos informa de nuestra ubicación actual dentro del sistema.
++ `mkdir`: Con este comando se crea un nuevo directorio en nuestra ubicación actual.
++ `cp`: Permite copiar un archivo o directorio, especificando su nueva ubicación y su nombre.
++ `rm`: Este comando permite eli8minar un archivo indicando su nombre.
+
+Pero tambièn hay algunos comandos que no se mencionan en el enlace, que se describen a continuación:
 ## Metodología
 Para el desarrollo de este laboratorio se hizo uso de Matlab 2021b en Windows, WSL version 1 para la ejeccucion de ROS y XServer para presentar la GUI de Ubuntu.
 Posteriormente para el ejercicio en python se uso una instalacion nativa de Ubuntu 20.04.   
@@ -189,3 +199,8 @@ Desde el script diseñado, se puede cambiar la configuraciòn para mover la tort
 En este ejercicio tambien se puede modificar la velocidad con la que se realiza cada instrucción, utilizando el parámetro de tiempo de las funcion `PubVel`, así, como decidir cuanto avanza y rota la tortuga, cada vez que se presiona una tecla.
 
 ## Conclusiones
++
++
++ Trabajar con scripts de Python, permite al usuario crear una variedad de archivos ejecutables para controlar distintos aspectos de la tortuga, de manera rápida y sin necesidad de instalar otro programa como Matlab.
++ El script implementado permite una personalizaciòn al gusto del usuario, se pueden modificar las teclas de cada una de las instrucciones, así como los valores asociadas a cada una de estas. Esto sin duda, facilita el trabajo del usuario, ante cualquier modificación necesaria.
++ Se pudieron conocer los comandos principales de ROS tanto en Matlab como en Python, y ver como cada uno permite el uso de mensajes, servicios, nodos y tópicos, lo que habla de la buena integración de ROS con cada una de estas plataformas, y de la diversidad de opciones para que el usuario trabaje con ROS.
