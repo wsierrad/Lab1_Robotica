@@ -134,6 +134,36 @@ Por utlimo podemos modificar en su totalidad la pose de la torturga usando el se
 [![ROS-MATLAB2.png](https://i.postimg.cc/3rp1xd0S/ROS-MATLAB2.png)](https://postimg.cc/xqfMsjRM)
 
 ### ROS usando scripts en python
+Para probar el script, se seguirán los siguientes pasos.
++ Lo primero es incluir el script dentro del archivo `CMakeLists.txt`, siguiendo la misma estructura de los otros scripts, como sigue:
+~~~
+catkin_install_python(PROGRAMS
+  scripts/turtlePos.py
+  scripts/turtleSpawn.py
+  scripts/turtleSub.py
+  scripts/turtleVel.py
+  scripts/myteleopkey.py #se añade el script diseñado.
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+~~~
+Tras esto se lanza una terminal, y se inicializa el nodo maestro.
+~~~
+roscore
+~~~
+En una segunda terminal, se inicía una tortuga.
+~~~
+rosrun turtlesim turtlesim_node
+~~~
+Finalmente en una tercera terminal.
+~~~
+cd catkin_ws/
+source devel/setup.bash
+rosrun hello_turtle myteleopkey.py
+~~~
+Asì, obtenemos una instancia de la tortuga, en la que por ejemplo, podemos dibujar una linea recta, y volver a la posición inicial.
+[![ROS-Python.png](https://i.postimg.cc/85FT4dYg/ROS-Python.png)](https://postimg.cc/Vr8yLt1K)
+Para mostrar, se dibujará una figura y se volverá a la posición inicial.
+[![Ros-Python2.png](https://i.postimg.cc/Xv1V91Qg/Ros-Python2.png)](https://postimg.cc/sBSdrmFB)
 
 ## Análisis de resultados
 
