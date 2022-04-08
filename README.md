@@ -6,7 +6,7 @@ William Arturo Sierra Díaz
 
 ## Metodología
 Para el desarrollo de este laboratorio se hizo uso de Matlab 2021b en Windows, WSL version 1 para la ejeccucion de ROS y XServer para presentar la GUI de Ubuntu.
-Posteriormente para el ejercicio en python se uso una instalacion nativa de Ubuntu 20.04.   
+Posteriormente para el ejercicio en python se uso una instalacion nativa de Ubuntu 20.04.    
 
 ### Conexión de ROS con Matlab:
 
@@ -15,34 +15,34 @@ como no le pasamos ningun argumento a este comando, este toma por defecto los va
 Cuando ya estemos conectados a ROS se configura el primer publicador hacia el topico `/turtle1/cmd_vel` esto se hace por medio del comando
 `rospublisher` que recibe como argumentos el nombre del topico y el tipo de mensaje. Con el publicador ya configurado se procede a crear el 
 mensaje y asignar los valores deseados de la siguiente forma:
-~~~
+```matlab
 % Creacion del mensaje
 velMsg = rosmessage(velPub); 
 % Se asgina el valor de 1 a la propiedad velocidad Lineal en X
 velMsg.Linear.X = 1; 
-~~~
+```
 Para enviar el mensaje se usa el comando `send` que recibe como argumentos el publicador y el mensaje a enviar.  
 Respecto al suscriptor se configura de forma similar al publicador, pero el comando para este es `rossubscriber`
 el cual recibe tambien el nombre del topico que para este caso es `/turtle1/pose` y el tipo de mensaje `turtlesim/Pose`.  
 Ahora se usa un servicio en este caso `/turtle1/teleport_absolute` el cual permite situar a la tortuga en una posicion 
 especifica con un angulo dado, para usar este servicio se declara de la siguiente forma:
-~~~
+```matlab
 % Creación del cliente que consume el servicio
 posePub = rossvcclient("/turtle1/teleport_absolute");
 % Creación de mensaje
 poseMsg = rosmessage(posePub);
 % Espera la conexion al servicio
 waitForServer(posePub,"Timeout",3)
-~~~
+```
 Despues se procede a configurar los valores del la posicion X, Y y el angulo theta para luego invocar al servicio por medio del comando `call`
-~~~
+```matlab
 % Define los valores de posicion de la tortuga
 poseMsg.X = 4; %Valor del mensaje
 poseMsg.Y = 3; %Valor del mensaje
 poseMsg.Theta = pi/6; %Valor del mensaje
 % Invoca al servicio y envia el mensaje
 posicion = call(posePub,poseMsg,"Timeout",3);
-~~~
+```
 Por ultimo se realiza la publicacion de valores de la velocidad lineal y angular por medio del publicador de `/turtle1/cmd_vel`  
 Asi se puede terminar la ejeccucion del nodo que conecta Matlab con ROS por medio de `rosshutdown`
 
@@ -189,3 +189,5 @@ Desde el script diseñado, se puede cambiar la configuraciòn para mover la tort
 En este ejercicio tambien se puede modificar la velocidad con la que se realiza cada instrucción, utilizando el parámetro de tiempo de las funcion `PubVel`, así, como decidir cuanto avanza y rota la tortuga, cada vez que se presiona una tecla.
 
 ## Conclusiones
++ Matlab permite la integracion y el control conectandose a ROS de una manera sencilla e intuitiva
++ Con el toolbox incorporado de ROS se pueden realizar la publicacion, suscripcion y consumo de una forma clara y sencilla
