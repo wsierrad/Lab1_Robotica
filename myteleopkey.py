@@ -72,7 +72,7 @@ if __name__ == '__main__':
             if key == b'a':
                 pubVel(0,1,0.1)
             if key  == b'd':
-                pubVel(0,-1,0.2)   
+                pubVel(0,-1,0.1)   
             if key ==b'r':
                 pubPos(5.54445,5.54445,0)
             if key ==b' ':
