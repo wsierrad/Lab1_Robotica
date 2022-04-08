@@ -5,9 +5,9 @@ Brian Alejandro Vásquez González
 William Arturo Sierra Díaz  
 
 ## Familiarización con comandos
-A lo largo de estas primeras semanas en la clase de laboratorio, y además tras ver el enlace con los comandos de mayor uso para la consola de Linux, se trabajó con varios comandos. Se hace un breve análisis de algunos de estos comandos de vital importancia.
-+`cd`: Uno de los más utiles y utilizados a lo largo del trabajo, permite moverse entre directorios y seleccionar uno en el cual trabajar.
-+`ls`: Ya dentro de un directorio, se usa `ls` para mostrar todos los archivos y directorios que se encuentran en el directorio actual. Además, también comandos como `ls -A`que muestra los permisos.
+A lo largo de estas primeras semanas en la clase de laboratorio, y además tras ver el enlace con los comandos de mayor uso para la consola de Linux, se trabajó con varios comandos. Se hace un breve análisis de algunos de estos comandos de vital importancia.    
++ `cd`: Uno de los más utiles y utilizados a lo largo del trabajo, permite moverse entre directorios y seleccionar uno en el cual trabajar.
++ `ls`: Ya dentro de un directorio, se usa `ls` para mostrar todos los archivos y directorios que se encuentran en el directorio actual. Además, también comandos como `ls -A`que muestra los permisos.
 + `pwd`: Este comando nos informa de nuestra ubicación actual dentro del sistema.
 + `mkdir`: Con este comando se crea un nuevo directorio en nuestra ubicación actual.
 + `cp`: Permite copiar un archivo o directorio, especificando su nueva ubicación y su nombre.
