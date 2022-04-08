@@ -161,8 +161,11 @@ source devel/setup.bash
 rosrun hello_turtle myteleopkey.py
 ~~~
 Asì, obtenemos una instancia de la tortuga, en la que por ejemplo, podemos dibujar una linea recta, y volver a la posición inicial.
+
 [![ROS-Python.png](https://i.postimg.cc/85FT4dYg/ROS-Python.png)](https://postimg.cc/Vr8yLt1K)
-Para mostrar, se dibujará una figura y se volverá a la posición inicial.
+
+Para mostrar el uso de todo el teclado, se dibujará una figura con avances y rotaciones, se girarà en 180º y se volverá a la posición inicial.
+
 [![Ros-Python2.png](https://i.postimg.cc/Xv1V91Qg/Ros-Python2.png)](https://postimg.cc/sBSdrmFB)
 
 ## Análisis de resultados
@@ -175,5 +178,14 @@ su uso, por esto la conexion con MatLab por medio de suscripciones, publicadores
 
 Adicionalmente el uso de comandos de ROS desde la interfaz de Matlab es una ventaja para tener centralizada la informacion de los modelos, los 
 publicadores y suscriptores son metodos interesantes ya que con unas pocas lineas de codigo se puede controlar la pose de la simulacion
+
+### ROS usando scripts en python
+Podemos obser var que utilizando Pytho, se logra una excelente ingraciòn con ros, y ademàs sin ncesidad de instalar ningún software adicional, siendo que Python ya viene con nuestra instalación de Linux.
+
+Se pueden utilizar distintos scripts con distintas funcionalidad, y asì poder manejar la tortuga casi que al antojo del usuario. Ademàs, gracias a la cantidad de lirerias de Python, y a su sintaxis, es amigable para el usuario.
+
+Desde el script diseñado, se puede cambiar la configuraciòn para mover la tortuga con las teclas que desee el usuario, de la misma manera, se pueden realizar giros relativos en cualquier número de grados que se desee, e igualmente ir a cualquier posición absoluta predeterminada.
+
+En este ejercicio tambien se puede modificar la velocidad con la que se realiza cada instrucción, utilizando el parámetro de tiempo de las funcion `PubVel`, así, como decidir cuanto avanza y rota la tortuga, cada vez que se presiona una tecla.
 
 ## Conclusiones
