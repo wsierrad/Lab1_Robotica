@@ -4,6 +4,16 @@
 Brian Alejandro Vásquez González  
 William Arturo Sierra Díaz  
 
+## Familiarización con comandos
+A lo largo de estas primeras semanas en la clase de laboratorio, y además tras ver el enlace con los comandos de mayor uso para la consola de Linux, se trabajó con varios comandos. Se hace un breve análisis de algunos de estos comandos de vital importancia.
++`cd`: Uno de los más utiles y utilizados a lo largo del trabajo, permite moverse entre directorios y seleccionar uno en el cual trabajar.
++`ls`: Ya dentro de un directorio, se usa `ls` para mostrar todos los archivos y directorios que se encuentran en el directorio actual. Además, también comandos como `ls -A`que muestra los permisos.
++ `pwd`: Este comando nos informa de nuestra ubicación actual dentro del sistema.
++ `mkdir`: Con este comando se crea un nuevo directorio en nuestra ubicación actual.
++ `cp`: Permite copiar un archivo o directorio, especificando su nueva ubicación y su nombre.
++ `rm`: Este comando permite eliminar un archivo indicando su nombre.
+
+Pero tambièn hay algunos comandos que no se mencionan en el enlace, que se describen a continuación:
 ## Metodología
 Para el desarrollo de este laboratorio se hizo uso de Matlab 2021b en Windows, WSL version 1 para la ejeccucion de ROS y XServer para presentar la GUI de Ubuntu.
 Posteriormente para el ejercicio en python se uso una instalacion nativa de Ubuntu 20.04.    
@@ -48,13 +58,13 @@ Asi se puede terminar la ejeccucion del nodo que conecta Matlab con ROS por medi
 
 ### ROS usando scripts en python
 
-El punto c) del laboratorio pedìa crear dentro del paquete `hello_turtle` de ROS un script de Python que permitiera operar una tortuga del paquete `turtlesim`con el teclado, siguiendo estas especificaciones:
+El punto c) del laboratorio pedía crear dentro del paquete `hello_turtle` de ROS un script de Python que permitiera operar una tortuga del paquete `turtlesim`con el teclado, siguiendo estas especificaciones:
 + Movimiento hacia delante y hacia atrás con las teclas **W** y **S**
 + Giro en sentido horario y antihorario con la teclas **D** y **A**
 + Retorno a su posición y orientación centrales con la tecla **R**
 + Debe dar un giro de 180º con la tecla **ESPACIO**
 
-En primer lugar, se crea un script llamado `myteleopkey.pi`en el que se importa cliente de Python para ROS, el mensaje twist, los servicios `TeleportAbsolute` y `TeleportRelative`, ademàs del modulo `termios` necesario para la detección de teclas mediante la función `getkey()`.
+En primer lugar, se crea un script llamado `myteleopkey.py`en el que se importa cliente de Python para ROS, el mensaje twist, los servicios `TeleportAbsolute` y `TeleportRelative`, ademàs del modulo `termios` necesario para la detección de teclas mediante la función `getkey()`.
 
 Debido a dificultades con la líbreria `keyboard` de Python, se recomendó el uso de un código con la función `getkey()` para la detección de las teclas.
 
@@ -146,15 +156,15 @@ catkin_install_python(PROGRAMS
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 ~~~
-Tras esto se lanza una terminal, y se inicializa el nodo maestro.
++Tras esto se lanza una terminal, y se inicializa el nodo maestro.
 ~~~
 roscore
 ~~~
-En una segunda terminal, se inicía una tortuga.
++En una segunda terminal, se inicía una tortuga.
 ~~~
 rosrun turtlesim turtlesim_node
 ~~~
-Finalmente en una tercera terminal.
++Finalmente en una tercera terminal.
 ~~~
 cd catkin_ws/
 source devel/setup.bash
@@ -164,7 +174,7 @@ Asì, obtenemos una instancia de la tortuga, en la que por ejemplo, podemos dibu
 
 [![ROS-Python.png](https://i.postimg.cc/85FT4dYg/ROS-Python.png)](https://postimg.cc/Vr8yLt1K)
 
-Para mostrar el uso de todo el teclado, se dibujará una figura con avances y rotaciones, se girarà en 180º y se volverá a la posición inicial.
+Para mostrar el uso de todo el teclado, se dibujará una figura con avances y rotaciones, se girará en 180º y se volverá a la posición inicial.
 
 [![Ros-Python2.png](https://i.postimg.cc/Xv1V91Qg/Ros-Python2.png)](https://postimg.cc/sBSdrmFB)
 
@@ -180,14 +190,17 @@ Adicionalmente el uso de comandos de ROS desde la interfaz de Matlab es una vent
 publicadores y suscriptores son metodos interesantes ya que con unas pocas lineas de codigo se puede controlar la pose de la simulacion
 
 ### ROS usando scripts en python
-Podemos obser var que utilizando Pytho, se logra una excelente ingraciòn con ros, y ademàs sin ncesidad de instalar ningún software adicional, siendo que Python ya viene con nuestra instalación de Linux.
+Podemos obser var que utilizando Python, se logra una excelente integración con ROS, y además sin necesidad de instalar ningún software adicional, siendo que Python ya viene con nuestra instalación de Linux.
 
-Se pueden utilizar distintos scripts con distintas funcionalidad, y asì poder manejar la tortuga casi que al antojo del usuario. Ademàs, gracias a la cantidad de lirerias de Python, y a su sintaxis, es amigable para el usuario.
+Se pueden utilizar distintos scripts con distintas funcionalidades, y asá poder manejar la tortuga casi que al antojo del usuario. Además, gracias a la cantidad de librerias de Python, y a su sintaxis, es amigable para el usuario.
 
-Desde el script diseñado, se puede cambiar la configuraciòn para mover la tortuga con las teclas que desee el usuario, de la misma manera, se pueden realizar giros relativos en cualquier número de grados que se desee, e igualmente ir a cualquier posición absoluta predeterminada.
+Desde el script diseñado, se puede cambiar la configuración para mover la tortuga con las teclas que desee el usuario, de la misma manera, se pueden realizar giros relativos en cualquier número de grados que se desee, e igualmente ir a cualquier posición absoluta predeterminada.
 
 En este ejercicio tambien se puede modificar la velocidad con la que se realiza cada instrucción, utilizando el parámetro de tiempo de las funcion `PubVel`, así, como decidir cuanto avanza y rota la tortuga, cada vez que se presiona una tecla.
 
 ## Conclusiones
 + Matlab permite la integracion y el control conectandose a ROS de una manera sencilla e intuitiva
 + Con el toolbox incorporado de ROS se pueden realizar la publicacion, suscripcion y consumo de una forma clara y sencilla
++ Trabajar con scripts de Python, permite al usuario crear una variedad de archivos ejecutables para controlar distintos aspectos de la tortuga, de manera rápida y sin necesidad de instalar otro programa como Matlab.
++ El script implementado permite una personalización al gusto del usuario, se pueden modificar las teclas de cada una de las instrucciones, así como los valores asociadas a cada una de estas. Esto sin duda, facilita el trabajo del usuario, ante cualquier modificación necesaria.
++ Se pudieron conocer los comandos principales de ROS tanto en Matlab como en Python, y ver como cada uno permite el uso de mensajes, servicios, nodos y tópicos, lo que habla de la buena integración de ROS con cada una de estas plataformas, y de la diversidad de opciones para que el usuario trabaje con ROS.
