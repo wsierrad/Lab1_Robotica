@@ -12,8 +12,17 @@ A lo largo de estas primeras semanas en la clase de laboratorio, y además tras 
 + `mkdir`: Con este comando se crea un nuevo directorio en nuestra ubicación actual.
 + `cp`: Permite copiar un archivo o directorio, especificando su nueva ubicación y su nombre.
 + `rm`: Este comando permite eliminar un archivo indicando su nombre.
++ `touch`: Este comando permite crear un archivo indicando su nombre.
 
-Pero tambièn hay algunos comandos que no se mencionan en el enlace, que se describen a continuación:
+Pero también hay algunos comandos que no se mencionan en el enlace, que se describen a continuación:
++ `chmod`: Permite establecer los permisos de un archivo o una carpeta.
++ `sudo`: Este comando permite dar permisos de root a la ejecuccion de otros comandos. Se antepone a la ejecuccion del comando `sudo <command> <args>`
++ `git clone <url>`: Permite clonar un repositorio remoto a una carpeta local para comenzar a trabajar con el codigo.
++ `git pull <origin> <branch>`: Trae lo ultimos cambios del origen y la rama que se le indique.
++ `git push <origin> <branch>`: Publica lo ultimos cambios al origen y la rama que se le indique.
++ `git add -A`: Agrega todos los cambios del repo al stagging.
++ `git commit -m <message>`: Realiza el commit de los cambios agregados al control de versiones.
+
 ## Metodología
 Para el desarrollo de este laboratorio se hizo uso de Matlab 2021b en Windows, WSL version 1 para la ejeccucion de ROS y XServer para presentar la GUI de Ubuntu.
 Posteriormente para el ejercicio en python se uso una instalacion nativa de Ubuntu 20.04.    
